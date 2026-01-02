@@ -1,0 +1,20 @@
+name: Build Dylib
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Theos
+        uses: p035fd/setup-theos@master
+      - name: Build Dylib
+        run: |
+          make package
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MyDylib
+          path: packages/*.deb
+
