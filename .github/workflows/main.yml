@@ -9,11 +9,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Theos
-        run: |
-          sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
-          echo "THEOS=/opt/theos" >> $GITHUB_ENV
+        uses: theos/setup-theos@master
 
-      - name: Build Dylib
+      - name: Build Package
         run: |
           make package FINALPACKAGE=1
           
