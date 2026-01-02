@@ -8,15 +8,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Theos
-        uses: theos/setup-theos@master
+      - name: Install Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git ~/theos
+          curl -LO https://github.com/theos/sdks/raw/master/iPhoneOS14.5.sdk.tar.xz
+          mkdir -p ~/theos/sdks
+          tar -xf iPhoneOS14.5.sdk.tar.xz -C ~/theos/sdks
+          echo "THEOS=~/theos" >> $GITHUB_ENV
 
-      - name: Build Package
+      - name: Build
         run: |
           make package FINALPACKAGE=1
           
-      - name: Upload Artifact
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: MyCheat-Dylib
+          name: MyCheat
           path: packages/*.deb
