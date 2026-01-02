@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Theos
-        uses: p035fd/setup-theos@master
+        uses: theos/setup-theos@master
       - name: Build Dylib
         run: |
           make package FINALPACKAGE=1
