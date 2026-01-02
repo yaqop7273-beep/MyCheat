@@ -1,0 +1,9 @@
+Package: com.yourname.cheat
+Name: MyCheat
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: Arab Cheat for Pool
+Maintainer: yaqop7273
+Author: yaqop7273
+Section: Tweaks
