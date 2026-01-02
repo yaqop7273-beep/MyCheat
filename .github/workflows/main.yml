@@ -7,11 +7,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Theos
-        uses: theos/setup-theos@master
+        run: |
+          sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
+          echo "THEOS=/opt/theos" >> $GITHUB_ENV
+
       - name: Build Dylib
         run: |
           make package FINALPACKAGE=1
+          
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
