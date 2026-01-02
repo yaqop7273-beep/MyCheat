@@ -6,15 +6,14 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Theos
         uses: p035fd/setup-theos@master
       - name: Build Dylib
         run: |
-          make package
+          make package FINALPACKAGE=1
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: MyDylib
+          name: MyCheat-Dylib
           path: packages/*.deb
-
